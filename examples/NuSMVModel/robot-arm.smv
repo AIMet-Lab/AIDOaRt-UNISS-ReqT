@@ -1,0 +1,69 @@
+MODULE main
+    VAR
+        alarm_button_pressed: boolean;
+        object_detected: boolean;
+        arm_moving: boolean;
+        arm_idle: boolean;
+        ef_idle: boolean;
+        ef_open: boolean;
+        ef_holds: boolean;
+        proximity_sensor: boolean;
+        state : {_init, scanning, move_to_target, target_reached, grabbing, alarm};
+
+    ASSIGN
+        init(state) := _init;
+
+        init(arm_moving) := FALSE;
+        init(ef_idle) := TRUE;
+        init(ef_open) := TRUE;
+        init(ef_holds) := FALSE;
+        arm_idle := !arm_moving;
+
+        next(state)      := case
+                                alarm_button_pressed                                : alarm;
+                                state = _init & ef_idle & arm_idle & ef_open        : scanning;
+                                state = scanning & object_detected                  : move_to_target;
+                                state = move_to_target & arm_moving                 : target_reached;
+                                state = target_reached                              : grabbing;
+                                state = grabbing & ef_holds                         : _init;
+                                state = alarm & !alarm_button_pressed               : _init; 
+                                TRUE                                                : state;
+                            esac;
+
+        next(arm_moving) := case
+                                proximity_sensor                                                    : FALSE;
+                                next(state) in {_init, scanning, alarm, grabbing, target_reached}   : FALSE;
+                                next(state) = move_to_target                                        : TRUE;
+                                TRUE                                                                : {TRUE, FALSE};
+                            esac;
+
+        next(ef_idle)   :=  case
+                                proximity_sensor                                : TRUE;
+                                next(state_grabbing) & !ef_holds                : FALSE;
+                                next(state) = _init & ef_open                   : FALSE;
+                                TRUE                                            : TRUE;
+                            esac;
+
+        next(ef_open)   :=  case 
+                                ef_holds & !ef_idle         : TRUE;
+                                !ef_idle                    : {TRUE, FALSE};
+                                TRUE                        : ef_open;
+                            esac;
+
+        next(ef_holds)  := case
+                                !ef_idle & !next(ef_open)   : {TRUE, FALSE};
+                                TRUE                        : FALSE;
+                           esac; 
+
+    DEFINE
+        state_init := state = _init;
+        state_scanning := state = scanning;
+        state_moving_to_target := state = move_to_target;
+        state_target_reached := state = target_reached;
+        state_grabbing := state = grabbing;
+        state_alarm := state = alarm;
+
+    FAIRNESS state_grabbing
+    FAIRNESS ef_open
+    FAIRNESS ef_holds
+    FAIRNESS !proximity_sensor

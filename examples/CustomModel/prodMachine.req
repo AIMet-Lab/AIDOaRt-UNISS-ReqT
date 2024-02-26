@@ -1,0 +1,22 @@
+# Input Variables
+add_piece is an input variable.
+prod_miss is an input variable.
+
+# Output Variables
+empty_queue is an output variable.
+disabled_queue is an output variable.
+piece_added is an output variable.
+state_idle is an output variable.
+state_working is an output variable.
+state_overheat is an output variable.
+new_production is an output variable.
+piece_added is an output variable.
+
+Globally, it is never the case that state_overheat holds.
+Globally, it is always the case that if state_working holds, then empty_queue and new_production eventually holds.
+Globally, it is always the case that if add_piece and piece_added holds, then not empy_queue holds as well.
+Globally, it is always the case that if state_working holds, then add_piece previously held.
+Globally, it is always the case that if piece_added holds, then state_working eventually holds.
+Before add_piece, it is always the case that state_idle holds.
+Globally, it is always the case that if prod_miss holds, then not new_production holds as well.
+Globally, prod_miss eventually holds.

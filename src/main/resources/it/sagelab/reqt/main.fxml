@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="302.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.sagelab.reqt.MainController">
+<children>
+      <HBox>
+          <Label text="Welcome in ReqT, a requirement-based automatic testing tool!" />
+         <padding>
+            <Insets bottom="40.0" top="20.0" />
+         </padding>
+      </HBox>
+
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="100.0" prefWidth="150.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Requirements File" />
+             <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
+                 <TextField fx:id="reqFileField" prefHeight="26.0" prefWidth="260.0">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+               </TextField>
+                 <Button fx:id="reqFileButton" text="Select" />
+             </HBox>
+            <ChoiceBox fx:id="modelSelectionBox" prefHeight="26.0" prefWidth="330.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="SUT Type" GridPane.rowIndex="1" />
+            <Label text="SUT" GridPane.rowIndex="2" />
+            <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <TextField fx:id="modelFileField" prefHeight="26.0" prefWidth="260.0">
+                <HBox.margin>
+                    <Insets right="10.0" />
+                </HBox.margin>
+               </TextField>
+                <Button fx:id="modelFileButton" text="Select" />
+            </HBox>
+             <Label text="Min Length" GridPane.rowIndex="3" />
+             <Label text="Max Length" GridPane.rowIndex="4" />
+            <TextField fx:id="kMinField" text="5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="kMaxField" text="100" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+         </children>
+      </GridPane>
+      <AnchorPane prefHeight="100.0" prefWidth="200.0">
+          <Button fx:id="runButton" prefWidth="100.0" text="Run" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+         <ProgressBar fx:id="bar" layoutY="44.0" prefHeight="16.0" prefWidth="174.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+         <Label fx:id="barLabel" layoutX="174.0" layoutY="52.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" />
+      </AnchorPane>
+</children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" />
+   </padding>
+</VBox>

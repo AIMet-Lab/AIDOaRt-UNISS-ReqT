@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.sagelab.reqt.TestDetailsController">
+   <children>
+      <TableView fx:id="traceTable" layoutX="10.0" layoutY="48.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0" />
+      <Label layoutX="14.0" layoutY="30.0" text="Status:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0" />
+      <Label fx:id="statusLabel" layoutX="103.0" layoutY="30.0" text="Passed/Failed" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="30.0">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
+      <Button fx:id="closeButton" layoutX="524.0" layoutY="360.0" mnemonicParsing="false" onAction="#closeButtonAction" prefWidth="100.0" text="Close" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <Label layoutX="14.0" layoutY="14.0" text="Test Number:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Label fx:id="indexLabel" layoutX="103.0" layoutY="14.0" text="Index" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="10.0">
+         <padding>
+            <Insets left="10.0" />
+         </padding></Label>
+   </children>
+</AnchorPane>

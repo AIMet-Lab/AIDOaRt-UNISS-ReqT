@@ -1,0 +1,31 @@
+.table-cell.input-var {
+    -fx-background-color:  #d5f5e3;
+}
+
+.table-row-cell:selected  .input-var {
+    -fx-background-color:  #c5e5d3;
+}
+
+.table-view .column-header.input-var {
+    -fx-base:  #d5f5e3;
+}
+
+.table-cell.output-var {
+    -fx-background-color: #fcf3cf;
+}
+
+.table-row-cell:selected .output-var {
+    -fx-background-color: #dcd3bf;
+}
+
+.table-view .column-header.output-var {
+    -fx-base: #fcf3cf;
+}
+
+.table-row-cell:selected  {
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: black ;
+}
